@@ -16,7 +16,7 @@ struct Node
         // int i=0;
 
 
-        while((index--)-1)
+        while(--index)
         {
             p=p->next;
             // i++;
@@ -121,33 +121,33 @@ int main()
     struct Node *third2= (struct Node *)malloc(sizeof(struct Node));
     struct Node *fourth2 = (struct Node *)malloc(sizeof(struct Node));
 
-    head1->data=7;
+    head1->data=1;
     head1->next=second1;
 
-    second1->data=14;
+    second1->data=2;
     second1->next=third1;
 
-    third1->data=28;
+    third1->data=3;
     third1->next=fourth1;
 
-    fourth1->data=56;
+    fourth1->data=4;
     fourth1->next=NULL;
 
-     head2->data=100;
+     head2->data=5;
     head2->next=second2;
 
-    second2->data=200;
+    second2->data=6;
     second2->next=third2;
 
-    third2->data=300;
+    third2->data=7;
     third2->next=fourth2;
 
-    fourth2->data=400;
+    fourth2->data=8;
     fourth2->next=NULL;
 
 
     int n;
-    printf("Enter 1 to 5 which number of function you want to call:\n");
+    printf("Enter any from 1 to 5 to choose the function you want to call:\n");
     printf("1: Insertion\n");
     printf("2: Deletion\n");
     printf("3: Print\n");

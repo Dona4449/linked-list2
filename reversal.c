@@ -53,7 +53,7 @@ main()
     third->next=fourth;
 
      fourth->data=10;
-    fourth->next=NULL;
+    fourth->next=head;
 
     printf("old list:\n");
     LinkedListtraversal(head);
