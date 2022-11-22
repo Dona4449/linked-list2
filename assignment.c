@@ -345,5 +345,5 @@ int main()
             printf("No choice choosen");
         }
     }
-    return 1;
+    return 0;
 }
