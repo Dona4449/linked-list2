@@ -167,8 +167,12 @@ struct Node *deleteByIndex(struct Node *head)
     printf("Enter the index at which the node is to be deleted : ");
     int i;
     scanf("%d", &i);
-    ifa9
-        i = i - 1;
+    if(i==1)
+    {
+        head = ptr->next;
+        free(ptr);
+        return head;
+    }
     while (--i)
     {
         prev = ptr;
@@ -184,8 +188,8 @@ struct Node *delete (struct Node *head)
 {
     printf("\n===========Deletion of a Node==========\n\n");
     printf("How you want to delete a node \n");
-    printf("1. By value\n");
-    printf("2. By index\n");
+    printf("1. By VALUE\n");
+    printf("2. By INDEX\n");
     printf("3. Main Menu\n");
     printf("Enter your choice : ");
     int ch;
@@ -197,7 +201,7 @@ struct Node *delete (struct Node *head)
         break;
 
     case 2:
-        deleteByIndex(head);
+        head = deleteByIndex(head);
         break;
 
     case 3:
@@ -213,6 +217,31 @@ struct Node *delete (struct Node *head)
 
 //=============================================================================================
 
+/* ========================================================================================
+                                Reversing a Linked List
+===========================================================================================*/
+struct Node* reverse(struct Node *head){
+    struct Node *prev, *curr, *next;
+    prev = NULL;
+    next = NULL;
+    curr = head;
+    while(curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
+    return head;
+}
+
+
+
+//=============================================================================================
+
+
+
 int main()
 {
 
@@ -222,12 +251,12 @@ int main()
     {
         displayLL(head);
         printf("\n======================[Linked List]======================\n\n");
-        printf(" 1. Create a new Linked List\n");
-        printf(" 2. Insert element in a Linked List\n");
-        printf(" 3. Delete element in a Linked List\n");
-        printf(" 4. Reverse a Linked List\n");
-        printf(" 5. Concatenate two Linked list\n");
-        printf(" 6. Exit\n");
+        printf(" 1. CREATE a new Linked List\n");
+        printf(" 2. INSERT element in a Linked List\n");
+        printf(" 3. DELETE element in a Linked List\n");
+        printf(" 4. REVERSE a Linked List\n");
+        printf(" 5. CONCATENATE two Linked list\n");
+        printf(" 6. EXIT\n");
         printf("Enter the choice you want to perform : ");
         int ch;
         scanf("%d", &ch);
@@ -249,8 +278,9 @@ int main()
             head = delete (head);
             break;
 
-            // case 4: reverse();
-            //         break;
+        case 4: 
+            head = reverse(head);
+            break;
 
             // case 5: concatenate();
             //         break;
