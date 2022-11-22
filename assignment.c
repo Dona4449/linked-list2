@@ -71,7 +71,7 @@ void insertEnd(struct Node *ptr)
 
 void insertn(struct Node *ptr)
 {
-    printf("Enter the index(starts from 1): ");
+    printf("Enter the INDEX(starts from 1): ");
     int i;
     scanf("%d", &i);
     i = i - 1;
@@ -91,9 +91,9 @@ struct Node *insert(struct Node *head)
 {
     printf("\n===========Insertion of a Node==========\n\n");
     printf("Where you want to insert a node? \n");
-    printf("1. At beginning\n");
-    printf("2. In the end\n");
-    printf("3. At 'nth' index\n");
+    printf("1. At BEGINNING\n");
+    printf("2. In the END\n");
+    printf("3. At 'nth' INDEX\n");
     printf("4. Main Menu\n");
     printf("Enter your choice : ");
     int ch;
@@ -220,6 +220,7 @@ struct Node *delete (struct Node *head)
 /* ========================================================================================
                                 Reversing a Linked List
 ===========================================================================================*/
+
 struct Node* reverse(struct Node *head){
     struct Node *prev, *curr, *next;
     prev = NULL;
@@ -236,9 +237,60 @@ struct Node* reverse(struct Node *head){
     return head;
 }
 
+//=============================================================================================
+
+
+/* ========================================================================================
+                                Concatenating two Linked Lists
+===========================================================================================*/
+
+struct Node *merge(struct Node *h1, struct Node *h2){
+    struct Node *ptr, *newH;
+    ptr = h1;
+    while(ptr->next != NULL)
+    {
+        ptr = ptr->next;
+    }
+    ptr->next = h2;
+    newH = h1;
+    return newH;
+}
+
+struct Node *concatenate(struct Node *head1){
+    system("clear");
+    struct Node *head2, *newHead;
+    head2 = NULL;
+    head2 = (struct Node *)malloc(sizeof(struct Node));
+    printf("Enter the Head element in Linked List 2 :");
+    scanf("%d",&head2->data);
+    while(1){
+        system("clear");
+        displayLL(head2);
+        printf("\n======================[Linked List-2]======================\n\n");
+        printf(" 1. INSERT element in a Linked List-2\n");
+        printf(" 2. Concatenate both Linked lists \n");
+        printf(" 3. Exit and delete Linked List-2\n");
+        printf("Enter the choice you want to perform : ");
+        int ch;
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1: head2 = insert(head2);
+            break;
+
+            case 2: newHead = merge(head1,head2);
+            return newHead;
+
+            case 3: exit;
+            free(head2);
+        }
+   }
+    return newHead;    
+}
 
 
 //=============================================================================================
+
 
 
 
@@ -250,7 +302,7 @@ int main()
     while (1)
     {
         displayLL(head);
-        printf("\n======================[Linked List]======================\n\n");
+        printf("\n======================[Linked List-1]======================\n\n");
         printf(" 1. CREATE a new Linked List\n");
         printf(" 2. INSERT element in a Linked List\n");
         printf(" 3. DELETE element in a Linked List\n");
@@ -282,8 +334,9 @@ int main()
             head = reverse(head);
             break;
 
-            // case 5: concatenate();
-            //         break;
+        case 5: 
+            head = concatenate(head);
+            break;
 
         case 6:
             return 0;
