@@ -43,7 +43,7 @@ struct Node
     q= q->next;
    i++;
 }
-
+//hello
     ptr->next= q->next;
     free(q);
     return head;
