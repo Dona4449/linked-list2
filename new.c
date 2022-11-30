@@ -50,24 +50,33 @@ struct Node
     }
 
     void printIthNode(struct Node *head,int i){
-    if(i<0){
-        printf("-1");
-        return;
+        if(i<0){
+            printf("-1");
+            return;
+            }
+            int count=1;
+            while(count<=i && head!=NULL){
+            head=head->next;
+            count++;
+            }
+        if(head)
+        {
+            printf("%d",head->data);
+        }
+        else
+        {
+            printf("-1");
+        }
+    // void print(struct Node *ptr)
+    // {
+    //     while (ptr!=NULL)
+    // {
+    //     printf("Element:%d\n", ptr->data);
+    //     ptr=ptr->next;
+    // }
+    
+    // }
     }
-    int count=1;
-    while(count<=i && head!=NULL){
-        head=head->next;
-        count++;
-    }
-    if(head)
-    {
-        printf("%d",head->data);
-    }
-    else
-    {
-        printf("-1");
-    }
-}
 
 struct Node *reverse(struct Node *head)
 {
@@ -150,9 +159,10 @@ int main()
     printf("Enter any from 1 to 5 to choose the function you want to call:\n");
     printf("1: Insertion\n");
     printf("2: Deletion\n");
-    printf("3: Print\n");
+    printf("3: Print ith index\n");
     printf("4: Reverse\n");
     printf("5: Concatenation\n");
+    printf("6. Print list\n");
 
     scanf("%d",&n);
     switch(n)
@@ -182,11 +192,11 @@ int main()
 
 
         case 3:
-         printf("Calling the function (printIthNode): ");
+         printf("Calling the function (print): ");
         int k;
           printf("enter index: ");
         scanf("%d",&k);
-        printIthNode(head1,k);
+        print(ptr);
         break;
 
          case 4:
@@ -198,8 +208,12 @@ int main()
         case 5:
          printf("Calling the function (concat): ");
         concatenate(head1,head2);
+        break;
+
+        case 6:
         linkedListTraversal(head1);
         break;
+         
 
 
         default:
